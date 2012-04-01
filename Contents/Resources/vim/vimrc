@@ -1,0 +1,99 @@
+" System vimrc file for MacVim
+"
+" Maintainer:	Bjorn Winckler <bjorn.winckler@gmail.com>
+" Last Change:	Sat Aug 29 2009
+
+set nocompatible
+
+" The default for 'backspace' is very confusing to new users, so change it to a
+" more sensible value.  Add "set backspace&" to your ~/.vimrc to reset it.
+set backspace+=indent,eol,start
+
+" Disable localized menus for now since only some items are translated (e.g.
+" the entire MacVim menu is set up in a nib file which currently only is
+" translated to English).
+set langmenu=none
+" colorscheme slate
+
+set autochdir
+set autoindent
+set smartindent
+set cindent
+set background=dark
+set expandtab
+set fileencodings=ucs-bom,utf-8,default,latin1
+set guifont=Menlo:h12
+set guioptions=egmrt
+set guitablabel=%M%t
+set helplang=en
+set langmenu=none
+set laststatus=2
+set mouse=a
+set printexpr=system('open\ -a\ Preview\ '.v:fname_in)\ +\ v:shell_error
+set shiftwidth=4
+set smarttab
+set softtabstop=4
+set tabstop=4
+set termencoding=utf-8
+set virtualedit=block
+set wildignore=*.pyc
+set window=48
+set showmatch
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set shiftround
+set history=1000
+set undolevels=1000
+set noswapfile
+set nobackup
+set wrap
+set textwidth=80
+set visualbell
+set number
+
+" Eger stasbar kapaliysa acmali!
+" set noshowmode
+
+if has('gui_macvim')
+    let macvim_hig_shift_movement = 1
+endif
+
+" Omni
+set omnifunc=syntaxcomplete#Complete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+
+" indent
+set foldmethod=marker
+autocmd FileType python set foldmethod=indent
+autocmd FileType javascript set foldmethod=marker
+autocmd FileType html set foldmethod=marker
+
+filetype plugin on
+
+" Shift-Tab
+" for command mode
+nmap <S-Tab> <<
+" for insert model
+imap <S-Tab> <Esc><<i
+
+noremap <silent> <Leader>y :TagbarToggle<CR>
+inoremap <M-space> <C-x><C-o>
+inoremap <D-d> <esc>dd<CR>
+nmap <silent> <C-t> :tabnew<CR>
+
+"Higlight current line only in insert mode
+set cursorline
+
+"Highlight cursor
+highlight CursorLine ctermbg=8 cterm=NONE
+
+let g:ragtag_global_maps = 1
+let g:is_bash = 1
