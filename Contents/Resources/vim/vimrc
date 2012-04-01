@@ -109,3 +109,25 @@ inoremap "  ""<left>
 inoremap '  ''<left>
 
 let g:user_zen_expandabbr_key = '<d-e>'
+
+" abbrs.
+func Ech(pat)
+   let c = nr2char(getchar(0))       
+   return (c =~ a:pat) ? '' : c      
+endfunc
+
+set complete+=k
+iabbrev <silent> <?p <?php  ?><c-o>2h<C-R>=Ech('\s')<CR>
+iabbrev <silent> <?x <?xml  ?><c-o>2h<C-R>=Ech('\s')<CR>
+iabbrev <silent> div. <div></div><c-o>5h<c-r>=Ech('\s')<CR>
+iabbrev <silent> fn function
+iabbrev <silent> fu function
+iabbrev <silent> fun function
+iabbrev <silent> pub public
+iabbrev <silent> pri private
+iabbrev <silent> prot protected
+iabbrev <silent> <?= <?php echo
+iabbrev <silent> doc document.<c-x><c-o><C-R>=Ech('\s')<CR>
+iabbrev <silent> bb Backbone.<C-R>=Ech('\s')<CR>
+iabbrev <silent> clog console.log<C-R>=Ech('\s')<CR>
+iabbrev <silent> con console.<C-R>=Ech('\s')<CR>
