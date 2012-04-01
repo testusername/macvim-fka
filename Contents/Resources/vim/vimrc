@@ -76,6 +76,9 @@ autocmd FileType python set foldmethod=indent
 autocmd FileType javascript set foldmethod=marker
 autocmd FileType html set foldmethod=marker
 
+" zen
+" autocmd FileType html inoremap
+
 filetype plugin on
 
 " Shift-Tab
@@ -96,4 +99,13 @@ set cursorline
 highlight CursorLine ctermbg=8 cterm=NONE
 
 let g:ragtag_global_maps = 1
+let g:use_zen_complete_tag = 1
 let g:is_bash = 1
+
+" fka keypress
+inoremap {  {<CR><tab><CR>}<left><up><tab><c-o>d$<c-o>4l
+inoremap (  ()<left>
+inoremap "  ""<left>
+inoremap '  ''<left>
+
+let g:user_zen_expandabbr_key = '<d-e>'
