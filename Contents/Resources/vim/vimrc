@@ -22,7 +22,7 @@ set cindent
 set background=dark
 set expandtab
 set fileencodings=ucs-bom,utf-8,default,latin1
-set guifont=Menlo:h12
+set guifont=Monaco:h12
 set guioptions=egmrt
 set guitablabel=%M%t
 set helplang=en
@@ -30,10 +30,10 @@ set langmenu=none
 set laststatus=2
 set mouse=a
 set printexpr=system('open\ -a\ Preview\ '.v:fname_in)\ +\ v:shell_error
-set shiftwidth=4
+set shiftwidth=2
 set smarttab
-set softtabstop=4
-set tabstop=4
+set softtabstop=2
+set tabstop=2
 set termencoding=utf-8
 set virtualedit=block
 set wildignore=*.pyc
@@ -48,10 +48,10 @@ set history=1000
 set undolevels=1000
 set noswapfile
 set nobackup
-set wrap
 set textwidth=80
 set visualbell
 set number
+set linespace=3
 
 " Eger stasbar kapaliysa acmali!
 " set noshowmode
@@ -103,31 +103,8 @@ let g:use_zen_complete_tag = 1
 let g:is_bash = 1
 
 " fka keypress
-inoremap {  {<CR><tab><CR>}<left><up><tab><c-o>d$<c-o>4l
-inoremap (  ()<left>
-inoremap "  ""<left>
-inoremap '  ''<left>
 
 let g:user_zen_expandabbr_key = '<d-e>'
-
-" abbrs.
-func Ech(pat)
-   let c = nr2char(getchar(0))       
-   return (c =~ a:pat) ? '' : c      
-endfunc
-
 set complete+=k
-iabbrev <silent> <?p <?php  ?><c-o>2h<C-R>=Ech('\s')<CR>
-iabbrev <silent> <?x <?xml  ?><c-o>2h<C-R>=Ech('\s')<CR>
-iabbrev <silent> div. <div></div><c-o>5h<c-r>=Ech('\s')<CR>
-iabbrev <silent> fn function
-iabbrev <silent> fu function
-iabbrev <silent> fun function
-iabbrev <silent> pub public
-iabbrev <silent> pri private
-iabbrev <silent> prot protected
-iabbrev <silent> <?= <?php echo
-iabbrev <silent> doc document.<c-x><c-o><C-R>=Ech('\s')<CR>
-iabbrev <silent> bb Backbone.<C-R>=Ech('\s')<CR>
-iabbrev <silent> clog console.log<C-R>=Ech('\s')<CR>
-iabbrev <silent> con console.<C-R>=Ech('\s')<CR>
+
+autocmd BufEnter * call DoWordComplete() 
